@@ -56,32 +56,38 @@
 			    echo "<table border=1>";
 			    $i = 2;
 			    while($excel->getActiveSheet()->getCell('A'.$i)->getValue() != ""){
-			      $idPoule =      $excel->getActiveSheet()->getCell('A'.$i)->getValue();
-			      $nom_poule = $excel->getActiveSheet()->getCell('B'.$i)->getValue();
-			      $equipe1 =    $excel->getActiveSheet()->getCell('C'.$i)->getValue();
-			      $equipe2 =    $excel->getActiveSheet()->getCell('D'.$i)->getValue();
-			      $equipe3 =    $excel->getActiveSheet()->getCell('E'.$i)->getValue();
-			      $equipe4 =    $excel->getActiveSheet()->getCell('F'.$i)->getValue();
+			      $idJoueur =      $excel->getActiveSheet()->getCell('A'.$i)->getValue();
+			      $nom_joueur = $excel->getActiveSheet()->getCell('B'.$i)->getValue();
+			      $prenom_joueur =    $excel->getActiveSheet()->getCell('C'.$i)->getValue();
+			      $numero =    $excel->getActiveSheet()->getCell('D'.$i)->getValue();
+			      $age =    $excel->getActiveSheet()->getCell('E'.$i)->getValue();
+			      $poste =    $excel->getActiveSheet()->getCell('F'.$i)->getValue();
+			      $poids =    $excel->getActiveSheet()->getCell('G'.$i)->getValue();
+			      $taille =    $excel->getActiveSheet()->getCell('H'.$i)->getValue();
+			      $nom_equipe =    $excel->getActiveSheet()->getCell('I'.$i)->getValue();
 
-			      $req = $bdd -> prepare("INSERT INTO poule(idPoule,nom_poule,equipe1,equipe2,equipe3,equipe4) VALUES (:kidPoule,:knom_poule,:kequipe1,:kequipe2,:kequipe3,:kequipe4)");
+			      $req = $bdd -> prepare("INSERT INTO joueur(idJoueur,nom_joueur,prenom_joueur,numero,age,poste,poids,taille,nom_equipe) VALUES (:kidJoueur,:knom_joueur,:kprenom_joueur,:knumero,:kage,:kposte,:kpoids,:ktaille,:knom_equipe)");
 			      $req -> execute(array(
-			        "kidPoule" => $idPoule,
-			        "knom_poule" => $nom_poule,
-			        "kequipe1" => $equipe1,
-			        "kequipe2" => $equipe2,
-			        "kequipe3" => $equipe3,
-			        "kequipe4" => $equipe4
-			        // "prenom_conducteur" => $prenom_conducteur,
+			        "kidJoueur" => $idJoueur,
+			        "knom_joueur" => $nom_joueur,
+			        "kprenom_joueur" => $prenom_joueur,
+			        "knumero" => $numero,
+			        "kage" => $age,
+			        "kposte" => $poste,
+			        "kpoids" => $poids,
+			        "ktaille" => $taille,
+			        "knom_equipe" => $nom_equipe
 			      ));
 			      echo "<tr>";
-			        echo "<td>".$idPoule."</td>";
-			        echo "<td>".$nom_poule."</td>";
-			        echo "<td>".$equipe1."</td>";
-			        echo "<td>".$equipe2."</td>";
-			        echo "<td>".$equipe3."</td>";
-			        echo "<td>".$equipe4."</td>";
-			        // echo "<td>".$date_miseEnService."</td>";
-			        // echo "<td>".$date_visiteTech."</td>";
+			        echo "<td>".$idJoueur."</td>";
+			        echo "<td>".$nom_joueur."</td>";
+			        echo "<td>".$prenom_joueur."</td>";
+			        echo "<td>".$numero."</td>";
+			        echo "<td>".$age."</td>";
+			        echo "<td>".$poste."</td>";
+			        echo "<td>".$poids."</td>";
+			        echo "<td>".$taille."</td>";
+			        echo "<td>".$nom_equipe."</td>";
 			      echo "</tr>";
 			      $i++;
 			    }
